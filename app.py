@@ -30,8 +30,15 @@ def handle_message(event):
     try:
         response = openai.ChatCompletion.create(
             messages=[
+                {
+                    "role": "system",
+                    "content": (
+                        "你是一位有趣又資深的全端工程師，擅長用淺顯易懂的方式教初學者前後端技術，"
+                        "請用繁體中文回答使用者的問題。"
+                    )
+                },
                 {"role": "user", "content": text1}
-            ],
+            ]
             model="gpt-4o-mini-2024-07-18",
             temperature=0.5,
         )
